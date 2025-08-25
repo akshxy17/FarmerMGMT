@@ -19,6 +19,10 @@
 * **Cattle Management**
 
   * Add, update, and view livestock (cows, buffaloes, goats, sheep) for a farmer.
+   
+* **LAND Management**
+
+  * Add, update, TypeofLand(Rainfed/Irrigated), OwnerofLand(Owned/Leased) for a farmer.
 
 * **Database Integration**
 
@@ -33,6 +37,7 @@
   * `/farmers` → Manage farmers
   * `/crops` → Manage crops
   * `/cattle` → Manage livestock
+  * `/Land` → Manage land
 
 ---
 
@@ -43,6 +48,7 @@
 * **ORM:** Hibernate / JPA
 * **Build Tool:** Maven
 * **JSON Handling:** Jackson
+
 
 
 
