@@ -22,7 +22,7 @@
 
 * **Database Integration**
 
-  * Uses Spring Data JPA with H2/MySQL (configurable) for persistence.
+  * Uses Spring Data JPA with MySQL (configurable) for persistence.
   * Automatic creation of tables with relationships:
 
     * One-to-many (Farmer → Crops)
@@ -48,3 +48,4 @@
 
 ```json
 ```
+
