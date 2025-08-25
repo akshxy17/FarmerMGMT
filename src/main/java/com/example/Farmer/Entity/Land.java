@@ -2,6 +2,7 @@ package com.example.Farmer.Entity;
 
 import com.example.Farmer.Entity.Enums.AssetType;
 import com.example.Farmer.Entity.Enums.LandType;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -29,13 +30,14 @@ public class Land {
     private AssetType assetType;
 
     @Column(nullable = false)
-    private Long size;
+    private double size;
     
     @Enumerated(EnumType.STRING)
     private LandType landType;
     
     @ManyToOne
     @JoinColumn(name = "farmer_id")
+    @JsonBackReference
     private Farmer farmer;
 
 }

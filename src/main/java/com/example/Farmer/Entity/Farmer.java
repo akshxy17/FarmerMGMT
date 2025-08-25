@@ -46,9 +46,11 @@ public class Farmer {
     @OneToMany(mappedBy = "farmer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Crop> crops;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "farmer", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Cattle cattles;
+    private List<Cattle> cattles;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "farmer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Land> lands;
 }
