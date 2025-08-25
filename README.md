@@ -39,10 +39,11 @@
 ## Tech Stack
 
 * **Backend:** Java, Spring Boot
-* **Database:** H2 / MySQL
+* **Database:** MySQL
 * **ORM:** Hibernate / JPA
 * **Build Tool:** Maven
 * **JSON Handling:** Jackson
+
 
 
 
