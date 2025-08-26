@@ -1,57 +1,42 @@
-# FarmerMGMT App
+# 🌱 Farmer Management System
 
-**FarmerMGMT** is a Spring Boot-based application designed to manage farmers, their crops, and livestock. This project provides a simple, intuitive REST API for CRUD operations on farmers, crops, and cattle data.
-
----
-
-## Features
-
-* **Farmer Management**
-
-  * Add, update, view, and delete farmer records.
-  * Manage personal details like name, contact, gender, and address.
-
-* **Crop Management**
-
-  * Add, update, and view crops for a farmer.
-  * Track crop type and quantity.
-
-* **Cattle Management**
-
-  * Add, update, and view livestock (cows, buffaloes, goats, sheep) for a farmer.
-   
-* **LAND Management**
-
-  * Add, update, TypeofLand(Rainfed/Irrigated), OwnerofLand(Owned/Leased) for a farmer.
-
-* **Database Integration**
-
-  * Uses Spring Data JPA with MySQL (configurable) for persistence.
-  * Automatic creation of tables with relationships:
-
-    * One-to-many (Farmer → Crops)
-    * One-to-one (Farmer → Cattle)
-
-* **RESTful API Endpoints**
-
-  * `/farmers` → Manage farmers
-  * `/crops` → Manage crops
-  * `/cattle` → Manage livestock
-  * `/Land` → Manage land
+A Spring Boot project that manages **Farmers** and their related entities such as **Crops**, **Land**, and **Cattles**.  
+This project demonstrates the use of **JPA Relationships** (One-to-One, One-to-Many, Many-to-One, Many-to-Many) to model real-world farming data.  
 
 ---
 
-## Tech Stack
+## 🚀 Tech Stack
 
-* **Backend:** Java, Spring Boot
-* **Database:** MySQL
-* **ORM:** Hibernate / JPA
-* **Build Tool:** Maven
-* **JSON Handling:** Jackson
+- **Java 17+** (or your project version)  
+- **Spring Boot**  
+- **Spring Data JPA / Hibernate**  
+- **SQL Database** (MySQL / PostgreSQL / H2 for dev)  
+- **Maven** (build & dependency management)  
+- **Postman** (API Testing)  
 
+---
 
+## 📌 Features
 
+- Manage **Farmers** and their details.  
+- Associate **Crops, Land, and Cattles** with Farmers.  
+- Perform CRUD operations on all entities.  
+- RESTful APIs with JSON responses.  
+- Relational mapping using **JPA Annotations**.  
 
+---
 
+## 🏗️ Entity Relationships
 
+- **Farmer**  
+  - `@OneToMany` → Crops  
+  - `@OneToMany` → Land  
+  - `@OneToMany` → Cattles  
+
+- **Crop**, **Land**, **Cattle**  
+  - `@ManyToOne` → Farmer  
+
+📌 Example: A single Farmer can have multiple Crops, multiple Land plots, and multiple Cattles.
+
+---
 
