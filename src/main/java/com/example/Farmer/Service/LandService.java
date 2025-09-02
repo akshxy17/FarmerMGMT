@@ -1,0 +1,54 @@
+package com.example.Farmer.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.Farmer.Entity.Land;
+import com.example.Farmer.Repository.LandRepo;
+
+@Service
+public class LandService {
+    
+    private final LandRepo repo;
+
+    @Autowired
+    public LandService(LandRepo repo){
+        this.repo = repo;
+    }
+
+    //Get all Lands
+    public List<Land> getAllLand(){
+        return repo.findAll();  
+    }
+
+    //Get Land by id
+    public Optional<Land> getLandById(Long id){
+        return repo.findById(id);
+    }
+
+    //Add Land on
+    public Land addLand(Land land){
+      return repo.save(land);
+    }
+
+    //Delete Land
+    public void deleteLand(Long id){
+        repo.deleteById(id);
+    }
+
+    //Custom Query to find land by farmer id
+    public List<Land> findFarmerByLandId(Long id){
+        return repo.findFarmerByLandId(id);
+    }
+
+    //Custom Query to find all lands
+    public List<Land> findAllLands(){
+        return repo.findAllLands();
+    }
+
+    
+
+}

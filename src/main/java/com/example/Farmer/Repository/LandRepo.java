@@ -1,0 +1,22 @@
+package com.example.Farmer.Repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import com.example.Farmer.Entity.Land;
+
+@Repository
+public interface LandRepo extends JpaRepository<Land, Long> {
+
+    // find land by farmer id
+    @Query(value = "SELECT * FROM land WHERE id = ?1", nativeQuery = true)
+    List<Land> findFarmerByLandId(Long id);
+
+    // find all lands
+    @Query(value = "SELECT * FROM land", nativeQuery = true)
+    List<Land> findAllLands();
+
+}
