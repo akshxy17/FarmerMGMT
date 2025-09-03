@@ -40,4 +40,13 @@ public class CattleService {
         repo.deleteById(id);
     }
 
+    //Custom Query to get cattles
+    public List<Cattle> customGetAllCattle(){
+        return repo.customFindAllCattles();
+    }
+
+    //Custom Query to get cattles by id
+    public Cattle customGetCattle(Long id){
+        return repo.CustomFindAllCattles(id);
+    }
 }

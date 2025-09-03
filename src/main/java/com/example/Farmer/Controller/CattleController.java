@@ -52,4 +52,18 @@ public class CattleController {
     public Optional<Cattle> getCattle(@PathVariable Long id){
         return cs.getCattle(id);
     }
+
+    //Custom endpoint to get cattles
+    @GetMapping("/custom/all")
+    @ResponseStatus(code = HttpStatus.OK)
+    public List<Cattle> customGetAllCattle(){
+        return cs.customGetAllCattle();
+    }
+
+    //Custom endpoint to get cattles by id
+    @GetMapping("/custom/{id}")
+    @ResponseStatus(code = HttpStatus.OK)
+    public Cattle customGetCattle(@PathVariable Long id){
+        return cs.customGetCattle(id);
+    }
 }

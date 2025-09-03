@@ -39,4 +39,14 @@ public class CropService {
         cropRepo.deleteById(id);
     }
 
+    //Custom Query to get all Crops
+    public List<Crop> getAllCropsCustom() {
+        return cropRepo.customFindAllCrops();
+    }
+
+    //Custom Query to get Crop by Id
+    public Crop getCropByIdCustom(Long id) {
+        return cropRepo.customFindCropById(id);
+    }
+
 }

@@ -81,5 +81,19 @@ public class FarmerController {
         return farmerservice.getFarmersByFarmingType(farmingType);
     }
 
+    //Custom Query to get all farmers
+    @GetMapping("/custom/all")  
+    @ResponseStatus(code = HttpStatus.OK)
+    public List<Farmer> getAllFarmersCustom() {
+        return farmerservice.getAllFarmersCustom();
+    }
+
+    //Custom Query to get farmer by id
+    @GetMapping("/custom/{id}") 
+    @ResponseStatus(code = HttpStatus.FOUND)
+    public Farmer getFarmerByIdCustom(@PathVariable Long id) {
+        return farmerservice.getFarmerByIdCustom(id);
+    }
+
 
 }

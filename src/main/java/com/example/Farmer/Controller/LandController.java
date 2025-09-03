@@ -51,16 +51,16 @@ public class LandController {
         ls.deleteLand(id);
     }
 
-    //customquery to find land by farmer id
-    @GetMapping("/find/{id}")
-    public List<Land> getLandByFarmerId(@PathVariable Long id){
-        return ls.findFarmerByLandId(id);
-    }
-
     //customquery to find all lands
-    @GetMapping("/all")
+    @GetMapping("/custom/all")
     public List<Land> getAllLands(){
         return ls.findAllLands();
+    }
+
+    //customquery to find land by farmer id
+    @GetMapping("/custom/{id}")
+    public Land getLandByFarmerId(@PathVariable Long id){
+        return ls.findFarmerByLandId(id);
     }
     
 }

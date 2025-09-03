@@ -51,5 +51,19 @@ public class CropController {
     public void deleteCrop(@PathVariable Long id){
         service.removeCrop(id);
     }
+
+    // Custom endpoint to get all crops using custom query
+    @GetMapping("/custom/all")
+    @ResponseStatus(code = HttpStatus.OK)
+    public List<Crop> getAllCropsCustom() {
+        return service.getAllCropsCustom();
+    }
+
+    // Custom endpoint to get crop by id using custom query
+    @GetMapping("/custom/{id}")
+    @ResponseStatus(code = HttpStatus.OK)
+    public Crop getCropByIdCustom(@PathVariable Long id) {
+        return service.getCropByIdCustom(id);
+    }
     
 }

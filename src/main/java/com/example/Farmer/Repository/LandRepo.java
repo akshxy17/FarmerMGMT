@@ -11,12 +11,12 @@ import com.example.Farmer.Entity.Land;
 @Repository
 public interface LandRepo extends JpaRepository<Land, Long> {
 
-    // find land by farmer id
+    // find land by id
     @Query(value = "SELECT * FROM land WHERE id = ?1", nativeQuery = true)
-    List<Land> findFarmerByLandId(Long id);
+    Land CustomfindByLandId(Long id);
 
     // find all lands
     @Query(value = "SELECT * FROM land", nativeQuery = true)
-    List<Land> findAllLands();
+    List<Land> customFindAllLands();
 
 }

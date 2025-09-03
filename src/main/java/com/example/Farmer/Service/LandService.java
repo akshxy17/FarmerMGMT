@@ -40,13 +40,13 @@ public class LandService {
     }
 
     //Custom Query to find land by farmer id
-    public List<Land> findFarmerByLandId(Long id){
-        return repo.findFarmerByLandId(id);
+    public Land findFarmerByLandId(Long id){
+        return repo.CustomfindByLandId(id);
     }
 
     //Custom Query to find all lands
     public List<Land> findAllLands(){
-        return repo.findAllLands();
+        return repo.customFindAllLands();
     }
 
     

@@ -16,4 +16,11 @@ public interface FarmerRepo extends JpaRepository<Farmer, Long> {
 
     @Query(value = "SELECT * FROM farmer WHERE farming_type = :farmingType", nativeQuery = true)
     List<Farmer> findByFarmingType(@Param("farmingType") String farmingType);
+
+    @Query(value = "SELECT * FROM farmer", nativeQuery = true)  // Custom query to get all farmers
+    List<Farmer> customFindAllFarmers();
+
+    @Query(value = "SELECT * FROM farmer WHERE id = :id", nativeQuery = true) // Custom query to get farmer by id
+    Farmer customFindFarmerById(@Param("id") Long id);
+
 }

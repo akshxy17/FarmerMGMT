@@ -133,4 +133,15 @@ public class FarmerService {
         return farmerRepo.findByFarmingType(farmingType);
     }
 
+
+    //custom query to get all farmers
+    public List<Farmer> getAllFarmersCustom() {
+        return farmerRepo.customFindAllFarmers();
+    }
+
+    //custom query to get farmer by id
+    public Farmer getFarmerByIdCustom(Long id) {
+        return farmerRepo.customFindFarmerById(id);
+    }
+
 }
