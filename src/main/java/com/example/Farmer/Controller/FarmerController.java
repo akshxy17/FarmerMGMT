@@ -48,7 +48,7 @@ public class FarmerController {
         return farmerservice.getFarmerById(id);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/remove/{id}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     public String deletefarmer(@PathVariable Long id) {
         farmerservice.deleteFarmer(id);
@@ -90,7 +90,7 @@ public class FarmerController {
 
     //Custom Query to get farmer by id
     @GetMapping("/custom/{id}") 
-    @ResponseStatus(code = HttpStatus.FOUND)
+    @ResponseStatus(code = HttpStatus.OK)
     public Farmer getFarmerByIdCustom(@PathVariable Long id) {
         return farmerservice.getFarmerByIdCustom(id);
     }

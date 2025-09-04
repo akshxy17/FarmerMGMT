@@ -46,7 +46,7 @@ public class CropController {
         return service.addCrop(crop);
     }
 
-    @DeleteMapping("/remove")
+    @DeleteMapping("/remove/{id}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     public void deleteCrop(@PathVariable Long id){
         service.removeCrop(id);

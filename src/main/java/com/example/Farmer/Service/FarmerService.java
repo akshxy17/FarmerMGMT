@@ -60,6 +60,7 @@ public class FarmerService {
 
         }
 
+        // Cattles
         if (newFarmer.getCattles() != null) {
             oldFarmer.getCattles().clear(); // clear old list
             newFarmer.getCattles().forEach(c -> {

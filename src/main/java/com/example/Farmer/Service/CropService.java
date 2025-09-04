@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.example.Farmer.Entity.Crop;
 import com.example.Farmer.Repository.CropRepo;
 
+
 @Service
 public class CropService {
 
@@ -37,6 +38,38 @@ public class CropService {
     // Delete Crop
     public void removeCrop(Long id) {
         cropRepo.deleteById(id);
+    }
+
+    // Update Crop
+    public Crop updateCrop(Long id, Crop newCrop) {
+        Crop crop = cropRepo.findById(id).orElseThrow();
+
+        crop.setCropName(newCrop.getCropName());
+        crop.setQuantity(newCrop.getQuantity());
+        crop.setType(newCrop.getType());
+        crop.setFarmer(newCrop.getFarmer());
+
+        return cropRepo.save(crop);
+    }
+
+    // Update partial Crop
+    public Crop patchCrop(Long id, Crop newCrop) {
+        Crop crop = cropRepo.findById(id).orElseThrow();
+
+        if (newCrop.getCropName() != null) {
+            crop.setCropName(newCrop.getCropName());
+        }
+        if (newCrop.getQuantity() != null) {
+            crop.setQuantity(newCrop.getQuantity());
+        }
+        if (newCrop.getType() != null) {
+            crop.setType(newCrop.getType());
+        }
+        if (newCrop.getFarmer() != null) {
+            crop.setFarmer(newCrop.getFarmer());
+        }
+
+        return cropRepo.save(crop);
     }
 
     //Custom Query to get all Crops
