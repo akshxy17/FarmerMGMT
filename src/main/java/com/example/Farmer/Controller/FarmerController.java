@@ -19,8 +19,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.Farmer.Entity.Farmer;
 import com.example.Farmer.Service.FarmerService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/farmer")
+@Tag(name = "farmer", description = "farmer management APIs")
 public class FarmerController {
 
     private final FarmerService farmerservice;
@@ -32,7 +36,7 @@ public class FarmerController {
 
     @PostMapping("/add")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Farmer addFarmer(@RequestBody Farmer farmer) {
+    public Farmer addFarmer(@Valid @RequestBody Farmer farmer) {
         return farmerservice.addFarmer(farmer);
     }
 

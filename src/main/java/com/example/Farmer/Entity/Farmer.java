@@ -13,6 +13,9 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,6 +30,8 @@ public class Farmer {
     @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Farmer name cannot be blank")
+    @Size(min = 3, max = 50, message = "Name must be between 3–50 characters")
     @Column(nullable = false)
     private String name;
 
@@ -37,8 +42,9 @@ public class Farmer {
     @Column(nullable = false)
     private String address;
 
+    @Pattern(regexp = "^[0-9]{10}$", message = "Phone must be 10 digits")
     @Column(nullable = false)
-    private Long contactNumber;
+    private String contactNumber;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

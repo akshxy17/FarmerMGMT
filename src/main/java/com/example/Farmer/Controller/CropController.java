@@ -16,9 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Farmer.Entity.Crop;
 import com.example.Farmer.Service.CropService;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+
 
 @RestController
 @RequestMapping("/crop")
+@Tag(name = "crop", description = "crop management APIs")
 public class CropController {
 
     private final CropService service;
@@ -42,7 +46,7 @@ public class CropController {
 
     @PostMapping("/add")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Crop addCrop(@RequestBody Crop crop) {
+    public Crop addCrop(@Valid @RequestBody Crop crop) {
         return service.addCrop(crop);
     }
 

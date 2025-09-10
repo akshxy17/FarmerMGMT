@@ -9,15 +9,20 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Farmer.Entity.Land;
 import com.example.Farmer.Service.LandService;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+
 
 @RestController
 @RequestMapping("/land")
+@Tag(name = "land", description = "land management APIs")
 public class LandController {
 
     private final LandService ls;
@@ -41,7 +46,7 @@ public class LandController {
 
     @PostMapping("/add")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Land addLand(Land land){
+    public Land addLand(@Valid @RequestBody Land land){
         return ls.addLand(land);
     }
 

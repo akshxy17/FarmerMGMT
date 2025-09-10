@@ -17,9 +17,13 @@ import com.example.Farmer.Entity.Cattle;
 import com.example.Farmer.Service.CattleService;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+
 
 @RestController
 @RequestMapping("/cattle")
+@Tag(name = "cattle", description = "cattle management APIs")
 public class CattleController {
     
     private final CattleService cs;
@@ -37,7 +41,7 @@ public class CattleController {
     
     @PostMapping("/add")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Cattle addCattle(@RequestBody Cattle c){
+    public Cattle addCattle(@Valid @RequestBody Cattle c){
         return cs.addCattle(c);
     }
 
