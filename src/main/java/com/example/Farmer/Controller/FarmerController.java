@@ -21,7 +21,9 @@ import com.example.Farmer.Service.FarmerService;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RestController
 @RequestMapping("/farmer")
 @Tag(name = "farmer", description = "farmer management APIs")
@@ -37,24 +39,28 @@ public class FarmerController {
     @PostMapping("/add")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Farmer addFarmer(@Valid @RequestBody Farmer farmer) {
+        log.info("Adding a new farmer: {}", farmer);
         return farmerservice.addFarmer(farmer);
     }
 
     @GetMapping
     @ResponseStatus(code = HttpStatus.OK)
     public List<Farmer> getAllFarmers() {
+        log.info("Fetching all farmers");
         return farmerservice.getAllFarmers();
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(code = HttpStatus.FOUND)
     public Optional<Farmer> getFarmerById(@PathVariable Long id) {
+        log.info("Fetching farmer with id: {}", id);
         return farmerservice.getFarmerById(id);
     }
 
     @DeleteMapping("/remove/{id}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     public String deletefarmer(@PathVariable Long id) {
+        log.info("Deleting farmer with id: {}", id);
         farmerservice.deleteFarmer(id);
         return "Farmer is Deleted";
     }
@@ -62,12 +68,14 @@ public class FarmerController {
     @PutMapping("/{id}")
     @ResponseStatus(code = HttpStatus.OK)
     public Farmer updateFarmer(@PathVariable Long id, @RequestBody Farmer newFarmer) {
+        log.info("Updating farmer with id: {}", id);
         return farmerservice.updateFarmer(id, newFarmer) ;
     }
 
     @PatchMapping("/{id}")
     @ResponseStatus(code = HttpStatus.OK)
     public Farmer partialUpdate(@PathVariable Long id, @RequestBody Farmer newFarmer) {
+        log.info("Partially updating farmer with id: {}", id);
         return farmerservice.partialUpdate(id, newFarmer);
     }
 
@@ -75,6 +83,7 @@ public class FarmerController {
     @GetMapping("/name/{name}")
     @ResponseStatus(code = HttpStatus.OK)
     public List<Farmer> getFarmersByName(@PathVariable String name) {
+        log.info("Fetching farmers with name: {}", name);
         return farmerservice.getFarmersByName(name);
     }
 
@@ -82,6 +91,7 @@ public class FarmerController {
     @GetMapping("/farmingType/{farmingType}")
     @ResponseStatus(code = HttpStatus.OK)
     public List<Farmer> getFarmersByFarmingType(@PathVariable String farmingType) {
+        log.info("Fetching farmers with farming type: {}", farmingType);
         return farmerservice.getFarmersByFarmingType(farmingType);
     }
 
@@ -89,6 +99,7 @@ public class FarmerController {
     @GetMapping("/custom/all")  
     @ResponseStatus(code = HttpStatus.OK)
     public List<Farmer> getAllFarmersCustom() {
+        log.info("Fetching all farmers (custom)");
         return farmerservice.getAllFarmersCustom();
     }
 
@@ -96,6 +107,7 @@ public class FarmerController {
     @GetMapping("/custom/{id}") 
     @ResponseStatus(code = HttpStatus.OK)
     public Farmer getFarmerByIdCustom(@PathVariable Long id) {
+        log.info("Fetching farmer with id (custom): {}", id);
         return farmerservice.getFarmerByIdCustom(id);
     }
 

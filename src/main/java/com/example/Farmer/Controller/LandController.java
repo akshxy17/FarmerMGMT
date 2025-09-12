@@ -18,12 +18,14 @@ import com.example.Farmer.Entity.Land;
 import com.example.Farmer.Service.LandService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 
-
+@Slf4j
 @RestController
 @RequestMapping("/land")
 @Tag(name = "land", description = "land management APIs")
 public class LandController {
+
 
     private final LandService ls;
 
@@ -35,36 +37,42 @@ public class LandController {
     @GetMapping
     @ResponseStatus(code = HttpStatus.OK)
     public List<Land> getLand(){
+        log.info("Fetching all lands");
         return ls.getAllLand();
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(code = HttpStatus.OK)
     public Optional<Land> getLand(@PathVariable Long id){
+        log.info("Fetching land with id: {}", id);
         return ls.getLandById(id);
     }
 
     @PostMapping("/add")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Land addLand(@Valid @RequestBody Land land){
+        log.info("Adding a new land: {}", land);
         return ls.addLand(land);
     }
 
     @DeleteMapping("/remove/{id}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     public void deleteLand(Long id){
+        log.info("Deleting land with id: {}", id);
         ls.deleteLand(id);
     }
 
     //customquery to find all lands
     @GetMapping("/custom/all")
     public List<Land> getAllLands(){
+        log.info("Fetching all lands (custom)");
         return ls.findAllLands();
     }
 
     //customquery to find land by farmer id
     @GetMapping("/custom/{id}")
     public Land getLandByFarmerId(@PathVariable Long id){
+        log.info("Fetching land with farmer id: {}", id);
         return ls.findFarmerByLandId(id);
     }
     
